@@ -26,7 +26,7 @@
     "clean": "rimraf lib *.tgz coverage"
   },
   "dependencies": {
-    "aurora-artifact-deployer": "1.0.0-c-caa824b.feature-refactor-SNAPSHOT",
+    "aurora-artifact-deployer": "1.0.0",
     "npm-bundled": "1.0.6",
     "tar": "4.4.10"
   },
