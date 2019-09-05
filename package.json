@@ -24,7 +24,6 @@
     "lint": "eslint --ext .ts ./src",
     "lint:fix": "eslint --fix --ext .ts ./src",
     "clean": "rimraf lib *.tgz coverage",
-    "postinstall": "npm-run-all -l build copy",
     "copy": "node scripts/copy-ci-scripts.js"
   },
   "dependencies": {
