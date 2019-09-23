@@ -25,6 +25,28 @@ describe('utils', () => {
     );
   });
 
+  describe('getTgzName for scoped package', () => {
+    const pkg: PackageJson = {
+      name: '@skatteetaten/artifact',
+      version: '1.0.0',
+      bundledDependencies: [],
+      devDependencies: {},
+      dependencies: {}
+    };
+
+    type Test = [Classifier, string];
+
+    test.each<Test>([
+      ['Webleveransepakke', 'skatteetaten-artifact-1.0.0.tgz'],
+      ['Dependencies', 'skatteetaten-artifact-1.0.0-dependencies.tgz']
+    ])(
+      '%# given classifier %s it should return tgz name as %s',
+      (classifier, expected) => {
+        expect(getTgzName(pkg, classifier)).toBe(expected);
+      }
+    );
+  });
+
   describe('getSize', () => {
     test.each`
       size       | expected
