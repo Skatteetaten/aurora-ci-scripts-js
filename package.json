@@ -23,8 +23,7 @@
     "test:watch": "jest --watch",
     "lint": "eslint --ext .ts ./src",
     "lint:fix": "eslint --fix --ext .ts ./src",
-    "clean": "rimraf lib *.tgz coverage",
-    "copy": "node scripts/copy-ci-scripts.js"
+    "clean": "rimraf lib *.tgz coverage"
   },
   "dependencies": {
     "aurora-artifact-deployer": "1.0.0",
