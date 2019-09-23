@@ -9,7 +9,7 @@ import {
   FileType
 } from 'aurora-artifact-deployer';
 
-import { getTgzName } from '../utils/utils';
+import { getTgzName, toSafeName } from '../utils/utils';
 import { Classifier } from '../utils/classifier';
 import { getPackageJson, PackageJson } from '../utils/packageJson';
 
@@ -70,7 +70,7 @@ export class NexusUploader {
 
     const schema: MavenSchema = {
       groupId: pkgJson.groupId,
-      artifactId: pkgJson.name,
+      artifactId: toSafeName(pkgJson.name),
       packaging: 'tgz',
       version: version
     };

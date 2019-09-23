@@ -1,8 +1,12 @@
 import { PackageJson } from './packageJson';
 import { Classifier } from './classifier';
 
+export function toSafeName(name: string): string {
+  return name.replace('@', '').replace('/', '-');
+}
+
 export function getTgzName(pj: PackageJson, classifier: Classifier): string {
-  const name = pj.name.replace('@', '').replace('/', '-');
+  const name = toSafeName(pj.name);
   if (classifier === 'Webleveransepakke') {
     return `${name}-${pj.version}.tgz`;
   } else {
