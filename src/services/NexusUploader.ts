@@ -56,10 +56,12 @@ export class NexusUploader {
       releaseType = 'maven-snapshots';
     }
 
+    const repoHost = this.getConfig('nexus3Host');
+
     const nexusConfig: NexusDeployerConfig = {
       auth,
       classifier,
-      url: `https://nexus.sits.no/repository/${releaseType}`,
+      url: `${repoHost}/repository/${releaseType}`,
       artifact: tgzPath
     };
 
@@ -83,13 +85,13 @@ export class NexusUploader {
 
   private getAuthentication(): NexusAuthentication {
     const auth = {
-      username: this.getConfig('nexusUsername'),
-      password: this.getConfig('nexusPassword')
+      username: this.getConfig('nexus3Username'),
+      password: this.getConfig('nexus3Password')
     };
 
     if (auth.password === 'undefined' || auth.username === 'undefined') {
       throw new Error(
-        'Nexus authentication is not valid. nexusUsername and nexusPassword must be set in .npmrc.'
+        'Nexus authentication is not valid. nexus3Username and nexus3Password must be set in .npmrc.'
       );
     }
 
