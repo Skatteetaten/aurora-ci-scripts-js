@@ -57,6 +57,11 @@ export class NexusUploader {
     }
 
     const repoHost = this.getConfig('nexus3Host');
+    if (repoHost === 'undefined') {
+      throw new Error(
+        'Nexus repository host is not valid. nexus3Host must be set in .npmrc.'
+      );
+    }
 
     const nexusConfig: NexusDeployerConfig = {
       auth,
