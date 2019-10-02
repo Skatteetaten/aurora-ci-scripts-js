@@ -51,15 +51,15 @@ export class NexusUploader {
     const auth = this.getAuthentication();
     const tgzPath = getTgzName(pkgJson, classifier);
 
-    let releaseType = 'releases';
+    let releaseType = 'maven-releases';
     if (version.includes('SNAPSHOT')) {
-      releaseType = 'snapshots';
+      releaseType = 'maven-snapshots';
     }
 
     const nexusConfig: NexusDeployerConfig = {
       auth,
       classifier,
-      url: `http://aurora/nexus/content/repositories/${releaseType}`,
+      url: `https://nexus.sits.no/repository/${releaseType}`,
       artifact: tgzPath
     };
 
