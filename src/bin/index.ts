@@ -20,6 +20,7 @@ function runScript(script: string, extraArgs: string[]): void {
 
   cmd.stderr.on('data', (data: Buffer) => {
     process.stderr.write(data);
+    process.exit(1);
   });
 }
 
