@@ -6,7 +6,7 @@ describe('packageJson', () => {
   describe('getPackageJson', () => {
     it('should create an object of package.json', () => {
       const pkg = getPackageJson(pkgPath);
-      expect(pkg.name).toBe('aurora-ci-scripts');
+      expect(pkg.name).toBe('@skatteetaten/ci-scripts');
     });
   });
 
