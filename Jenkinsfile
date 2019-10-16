@@ -5,7 +5,6 @@ def overrides = [
     scriptVersion  : 'v7',
     pipelineScript: 'https://git.aurora.skead.no/scm/ao/aurora-pipeline-scripts.git',
     iq: false,
-    iqOrganizationName: "Team AOS",
     publishToNpm: true,
     publishSnapshotToNpm: true,
     npmInstallCommand: 'ci',
@@ -15,7 +14,7 @@ def overrides = [
     openShiftBuild: false,
     deployTo: null,
     versionStrategy: [
-        [ branch: 'master', versionHint: '1']
+        [ branch: 'master', versionHint: '2']
     ]
 ]
 

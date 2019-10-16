@@ -11,7 +11,7 @@ Features:
 ## Getting started
 
 ```bash
-npm install aurora-ci-scripts
+npm install @skatteetaten/ci-scripts
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ npm install aurora-ci-scripts
 If you have installed the script globally, then you can use it as follow:
 
 ```
-aurora-ci-scripts <command>
+@skatteetaten/ci-scripts <command>
 ```
 
 ## Commands
@@ -32,7 +32,7 @@ with all dependencies and its sub dependencies specified in `"dependencies"` in 
 Tarball format: `<name>-<version>-dependencies.tgz`
 
 ```
-aurora-ci-scripts pack-dependencies
+@skatteetaten/ci-scripts pack-dependencies
 ```
 
 ### upload
@@ -42,10 +42,10 @@ aurora-ci-scripts pack-dependencies
 Uploads tarball. The tarball must exists. It can upload two types of tarball.
 
 - **Webleveransepakke**: This is the tarball you get when running `npm pack`.
-- **Dependencies**: This is the tarball you get when running `aurora-ci-scripts pack-dependencies`
+- **Dependencies**: This is the tarball you get when running `@skatteetaten/ci-scripts pack-dependencies`
 
 ```
-aurora-ci-scripts upload <version> <classifier>
+@skatteetaten/ci-scripts upload <version> <classifier>
 ```
 
 - **version**: `string`
