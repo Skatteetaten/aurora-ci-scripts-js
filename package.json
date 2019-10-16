@@ -6,7 +6,7 @@
   "author": "Aurora OpenShift Utvikling",
   "license": "Apache-2.0",
   "bin": {
-    "aurora-ci-scripts": "./lib/bin/index.js"
+    "skatteetaten-ci-scripts": "./lib/bin/index.js"
   },
   "files": [
     "lib"
