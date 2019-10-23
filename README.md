@@ -37,7 +37,11 @@ skatteetaten-ci-scripts pack-dependencies
 
 ### upload
 
-**nexusUsername and nexusPassword must be set in `.npmrc` (global or local).**
+#### Required configurations
+The following configurations must be set in `.npmrc` (global or local).
+- **nexus3Host**: Host to Nexus 3, ex: https://localhost
+- **nexus3Username**: Username for Nexus 3.
+- **nexus3Password**: Password for Nexus 3.
 
 Uploads tarball. The tarball must exists. It can upload two types of tarball.
 
