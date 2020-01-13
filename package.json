@@ -27,27 +27,27 @@
   },
   "dependencies": {
     "aurora-artifact-deployer": "1.0.0",
-    "npm-bundled": "1.0.6",
-    "tar": "5.0.2"
+    "npm-bundled": "1.1.1",
+    "tar": "5.0.5"
   },
   "devDependencies": {
-    "@babel/core": "7.6.2",
-    "@babel/preset-env": "7.6.2",
-    "@babel/preset-typescript": "7.6.0",
-    "@types/jest": "24.0.18",
-    "@types/node": "10.14.1",
-    "@types/rimraf": "2.0.2",
+    "@babel/core": "7.8.0",
+    "@babel/preset-env": "7.8.0",
+    "@babel/preset-typescript": "7.8.0",
+    "@types/jest": "24.0.25",
+    "@types/node": "13.1.6",
+    "@types/rimraf": "2.0.3",
     "@types/tar": "4.0.3",
-    "@typescript-eslint/eslint-plugin": "2.3.2",
-    "@typescript-eslint/parser": "2.3.2",
-    "eslint": "6.5.1",
-    "eslint-config-prettier": "6.3.0",
-    "eslint-plugin-prettier": "3.1.1",
+    "@typescript-eslint/eslint-plugin": "2.15.0",
+    "@typescript-eslint/parser": "2.15.0",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.9.0",
+    "eslint-plugin-prettier": "3.1.2",
     "jest": "24.9.0",
     "npm-run-all": "4.1.5",
-    "prettier": "1.18.2",
+    "prettier": "1.19.1",
     "rimraf": "3.0.0",
-    "typescript": "3.6.3"
+    "typescript": "3.7.4"
   },
   "prettier": {
     "singleQuote": true
