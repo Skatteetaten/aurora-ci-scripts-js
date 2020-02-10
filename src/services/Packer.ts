@@ -53,7 +53,7 @@ export class Packer {
       allDependencies: depFiles
     };
 
-    if (createTarball) {
+    if (createTarball && Object.keys(pj.dependencies).length > 0) {
       tar
         .create({ gzip: true }, files)
         .pipe(createWriteStream(target))
