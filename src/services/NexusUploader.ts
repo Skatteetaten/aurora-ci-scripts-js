@@ -20,7 +20,9 @@ export class NexusUploader {
     classifier: Classifier
   ): Promise<void> {
     const pkgJson = this.getPackageJson(appPath);
-    await this.uploadToNexus(pkgJson, version, classifier);
+    if (Object.keys(pkgJson.dependencies).length > 0) {
+      await this.uploadToNexus(pkgJson, version, classifier);
+    }
   }
 
   private getPackageJson(path: string): Required<PackageJson> {
