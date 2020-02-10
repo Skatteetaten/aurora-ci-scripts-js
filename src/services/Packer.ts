@@ -49,17 +49,15 @@ export class Packer {
       allDependencies: depFiles
     };
 
-    if (Object.keys(pj.dependencies).length > 0) {
-      if (createTarball) {
-        tar
-          .create({ gzip: true }, files)
-          .pipe(createWriteStream(target))
-          .on('close', () => {
-            onClose(quiet, { ...result, hasCreatedTarball: true });
-          });
-      } else {
-        onClose(quiet, { ...result, hasCreatedTarball: false });
-      }
+    if (createTarball && Object.keys(pj.dependencies).length > 0) {
+      tar
+        .create({ gzip: true }, files)
+        .pipe(createWriteStream(target))
+        .on('close', () => {
+          onClose(quiet, { ...result, hasCreatedTarball: true });
+        });
+    } else {
+      onClose(quiet, { ...result, hasCreatedTarball: false });
     }
   }
 }
