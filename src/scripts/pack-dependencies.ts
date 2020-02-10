@@ -9,6 +9,10 @@ function printStats(quiet: boolean, result: PackDependenciesResult): void {
   if (quiet) {
     return;
   }
+  console.log('alldependencies');
+  console.log(result.allDependencies);
+  console.log('bundleddependencies');
+  console.log(result.bundledDependencies);
 
   if (!(result.allDependencies.length > 0)) {
     console.log('===== Details =====');
@@ -16,11 +20,6 @@ function printStats(quiet: boolean, result: PackDependenciesResult): void {
     console.log(
       'So there will not be done a Nexus IQ analyzes of the application'
     );
-
-    console.log('alldependencies');
-    console.log(result.allDependencies);
-    console.log('bundleddependencies');
-    console.log(result.bundledDependencies);
 
     return;
   }
