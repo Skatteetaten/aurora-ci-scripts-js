@@ -33,7 +33,7 @@ export class Packer {
   }: PackDependenciesOption): void {
     const pj = createPackageWithBundledDeps(packageJsonPath);
 
-    if (!quiet) {
+    if (!quiet || !(Object.keys(pj.dependencies).length > 0)) {
       console.log('===== Packing =====');
       pj.bundledDependencies.forEach(item => console.log(item));
     }

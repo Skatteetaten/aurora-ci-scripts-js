@@ -11,7 +11,11 @@ function printStats(quiet: boolean, result: PackDependenciesResult): void {
   }
 
   if (!(result.allDependencies.length > 0)) {
-    console.log('testing');
+    console.log('===== Details =====');
+    console.log('The application contains no dependencies');
+    console.log(
+      'So there will not be done a Nexus IQ analyzes of the application'
+    );
     return;
   }
 
