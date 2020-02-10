@@ -16,6 +16,7 @@ export interface PackDependenciesResult {
   bundledDependencies: string[];
   allDependencies: string[];
   hasCreatedTarball: boolean;
+  hasDependencies: boolean;
 }
 
 export class Packer {
@@ -49,15 +50,29 @@ export class Packer {
       allDependencies: depFiles
     };
 
-    if (createTarball && Object.keys(pj.dependencies).length > 0) {
+    if (!(Object.keys(pj.dependencies).length > 0)) {
+      onClose(quiet, {
+        ...result,
+        hasCreatedTarball: false,
+        hasDependencies: false
+      });
+    } else if (createTarball) {
       tar
         .create({ gzip: true }, files)
         .pipe(createWriteStream(target))
         .on('close', () => {
-          onClose(quiet, { ...result, hasCreatedTarball: true });
+          onClose(quiet, {
+            ...result,
+            hasCreatedTarball: true,
+            hasDependencies: true
+          });
         });
     } else {
-      onClose(quiet, { ...result, hasCreatedTarball: false });
+      onClose(quiet, {
+        ...result,
+        hasCreatedTarball: false,
+        hasDependencies: true
+      });
     }
   }
 }
