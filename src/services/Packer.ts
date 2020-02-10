@@ -33,35 +33,35 @@ export class Packer {
   }: PackDependenciesOption): void {
     const pj = createPackageWithBundledDeps(packageJsonPath);
 
-    if (!quiet) {
-      console.log('===== Packing =====');
-      pj.bundledDependencies.forEach(item => console.log(item));
-    }
-    console.log('1');
-    const walker = new BundleWalkerSync({
-      packageJsonCache: new Map([[packageJsonPath, pj]])
-    });
-    console.log('2');
-    const depFiles: string[] = walker.start().result;
-    const files = depFiles.map(file => `node_modules/${file}`);
-    console.log('3');
-    const target = getTgzName(pj, 'Dependencies');
-    console.log('4');
-    const result = {
-      target,
-      bundledDependencies: pj.bundledDependencies,
-      allDependencies: depFiles
-    };
+    console.log('test');
 
-    if (createTarball && Object.keys(pj.dependencies).length > 0) {
-      tar
-        .create({ gzip: true }, files)
-        .pipe(createWriteStream(target))
-        .on('close', () => {
-          onClose(quiet, { ...result, hasCreatedTarball: true });
-        });
-    } else {
-      onClose(quiet, { ...result, hasCreatedTarball: false });
+    if (Object.keys(pj.dependencies).length > 0) {
+      if (!quiet) {
+        console.log('===== Packing =====');
+        pj.bundledDependencies.forEach(item => console.log(item));
+      }
+      const walker = new BundleWalkerSync({
+        packageJsonCache: new Map([[packageJsonPath, pj]])
+      });
+      const depFiles: string[] = walker.start().result;
+      const files = depFiles.map(file => `node_modules/${file}`);
+      const target = getTgzName(pj, 'Dependencies');
+      const result = {
+        target,
+        bundledDependencies: pj.bundledDependencies,
+        allDependencies: depFiles
+      };
+
+      if (createTarball) {
+        tar
+          .create({ gzip: true }, files)
+          .pipe(createWriteStream(target))
+          .on('close', () => {
+            onClose(quiet, { ...result, hasCreatedTarball: true });
+          });
+      } else {
+        onClose(quiet, { ...result, hasCreatedTarball: false });
+      }
     }
   }
 }
