@@ -10,7 +10,7 @@ function printStats(quiet: boolean, result: PackDependenciesResult): void {
     return;
   }
 
-  if (result.allDependencies.length > 0) {
+  if (!(result.allDependencies.length > 0)) {
     console.log('testing');
     return;
   }
