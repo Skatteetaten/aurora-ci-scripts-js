@@ -10,7 +10,7 @@ import {
 } from 'aurora-artifact-deployer';
 
 import { getTgzName, toSafeName } from '../utils/utils';
-import { Classifier } from '../utils/classifier';
+import { Classifier, VALID_CLASSIFIERS } from '../utils/classifier';
 import { getPackageJson, PackageJson } from '../utils/packageJson';
 
 export class NexusUploader {
@@ -20,7 +20,11 @@ export class NexusUploader {
     classifier: Classifier
   ): Promise<void> {
     const pkgJson = this.getPackageJson(appPath);
-    if (Object.keys(pkgJson.dependencies).length > 0) {
+    if (
+      (Object.keys(pkgJson.dependencies).length > 0 &&
+        classifier === VALID_CLASSIFIERS[1]) ||
+      classifier === VALID_CLASSIFIERS[0]
+    ) {
       await this.uploadToNexus(pkgJson, version, classifier);
     }
   }
