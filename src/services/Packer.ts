@@ -33,25 +33,23 @@ export class Packer {
   }: PackDependenciesOption): void {
     const pj = createPackageWithBundledDeps(packageJsonPath);
 
-    console.log('test');
+    if (!quiet) {
+      console.log('===== Packing =====');
+      pj.bundledDependencies.forEach(item => console.log(item));
+    }
+    const walker = new BundleWalkerSync({
+      packageJsonCache: new Map([[packageJsonPath, pj]])
+    });
+    const depFiles: string[] = walker.start().result;
+    const files = depFiles.map(file => `node_modules/${file}`);
+    const target = getTgzName(pj, 'Dependencies');
+    const result = {
+      target,
+      bundledDependencies: pj.bundledDependencies,
+      allDependencies: depFiles
+    };
 
     if (Object.keys(pj.dependencies).length > 0) {
-      if (!quiet) {
-        console.log('===== Packing =====');
-        pj.bundledDependencies.forEach(item => console.log(item));
-      }
-      const walker = new BundleWalkerSync({
-        packageJsonCache: new Map([[packageJsonPath, pj]])
-      });
-      const depFiles: string[] = walker.start().result;
-      const files = depFiles.map(file => `node_modules/${file}`);
-      const target = getTgzName(pj, 'Dependencies');
-      const result = {
-        target,
-        bundledDependencies: pj.bundledDependencies,
-        allDependencies: depFiles
-      };
-
       if (createTarball) {
         tar
           .create({ gzip: true }, files)
