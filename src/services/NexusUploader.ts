@@ -26,6 +26,9 @@ export class NexusUploader {
       classifier === VALID_CLASSIFIERS[0]
     ) {
       await this.uploadToNexus(pkgJson, version, classifier);
+    } else {
+      console.log('No dependencies to analyze');
+      console.log('Uploading skipped');
     }
   }
 

@@ -38,12 +38,15 @@ export class Packer {
       console.log('===== Packing =====');
       pj.bundledDependencies.forEach(item => console.log(item));
     }
+
     const walker = new BundleWalkerSync({
       packageJsonCache: new Map([[packageJsonPath, pj]])
     });
+
     const depFiles: string[] = walker.start().result;
     const files = depFiles.map(file => `node_modules/${file}`);
     const target = getTgzName(pj, 'Dependencies');
+
     const result = {
       target,
       bundledDependencies: pj.bundledDependencies,

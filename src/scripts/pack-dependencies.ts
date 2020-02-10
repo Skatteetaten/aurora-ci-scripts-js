@@ -11,11 +11,9 @@ function printStats(quiet: boolean, result: PackDependenciesResult): void {
   }
 
   if (!result.hasDependencies) {
-    console.log('===== Details =====');
-    console.log('The application contains no dependencies');
-    console.log(
-      'So there will not be done a Nexus IQ analyzes of the application'
-    );
+    console.log('No dependencies to analyze');
+    console.log('Packing Dependencies skipped');
+
     return;
   }
 
