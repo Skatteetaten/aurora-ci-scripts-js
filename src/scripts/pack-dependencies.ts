@@ -10,7 +10,12 @@ function printStats(quiet: boolean, result: PackDependenciesResult): void {
     return;
   }
 
-  if (!result.hasCreatedTarball && result.allDependencies.length > 0) {
+  if (result.allDependencies.length > 0) {
+    console.log('testing');
+    return;
+  }
+
+  if (!result.hasCreatedTarball) {
     throw new Error('Tarball not created when it should have been.');
   }
 
