@@ -11,7 +11,10 @@ import {
 
 import { getTgzName, toSafeName } from '../utils/utils';
 import { Classifier } from '../utils/classifier';
-import { getPackageJson, PackageJson } from '../utils/packageJson';
+import {
+  PackageJson,
+  createPackageWithBundledDeps
+} from '../utils/packageJson';
 
 export class NexusUploader {
   public async upload(
@@ -20,9 +23,9 @@ export class NexusUploader {
     classifier: Classifier
   ): Promise<void> {
     const pkgJson = this.getPackageJson(appPath);
-    const hasDependencies = Object.keys(pkgJson.dependencies).length > 0;
+    const hasBundledDependencies = pkgJson.bundledDependencies.length > 0;
 
-    if (!hasDependencies && classifier === 'Dependencies') {
+    if (!hasBundledDependencies && classifier === 'Dependencies') {
       console.log('===== Info =====');
       console.log('No dependencies to analyze');
       console.log('Uploading skipped');
@@ -33,7 +36,7 @@ export class NexusUploader {
 
   private getPackageJson(path: string): Required<PackageJson> {
     const pjPath = resolve(path, 'package.json');
-    const pkgJson = getPackageJson(pjPath);
+    const pkgJson = createPackageWithBundledDeps(pjPath);
     if (!pkgJson) {
       throw new Error('Error reading package.json');
     }

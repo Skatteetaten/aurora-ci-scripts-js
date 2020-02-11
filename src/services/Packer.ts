@@ -16,7 +16,7 @@ export interface PackDependenciesResult {
   bundledDependencies: string[];
   allDependencies: string[];
   hasCreatedTarball: boolean;
-  hasDependencies: boolean;
+  hasBundledDependencies: boolean;
 }
 
 export class Packer {
@@ -33,10 +33,10 @@ export class Packer {
     quiet = false
   }: PackDependenciesOption): void {
     const pj = createPackageWithBundledDeps(packageJsonPath);
-    const hasDependencies = Object.keys(pj.dependencies).length > 0;
+    const hasBundledDependencies = pj.bundledDependencies.length > 0;
 
     if (!quiet) {
-      if (hasDependencies) {
+      if (hasBundledDependencies) {
         console.log('===== Packing =====');
         pj.bundledDependencies.forEach(item => console.log(item));
       }
@@ -56,7 +56,7 @@ export class Packer {
       allDependencies: depFiles
     };
 
-    if (createTarball && hasDependencies) {
+    if (createTarball && hasBundledDependencies) {
       tar
         .create({ gzip: true }, files)
         .pipe(createWriteStream(target))
@@ -64,14 +64,14 @@ export class Packer {
           onClose(quiet, {
             ...result,
             hasCreatedTarball: true,
-            hasDependencies
+            hasBundledDependencies
           });
         });
     } else {
       onClose(quiet, {
         ...result,
         hasCreatedTarball: false,
-        hasDependencies
+        hasBundledDependencies
       });
     }
   }
