@@ -11,9 +11,9 @@ function printStats(quiet: boolean, result: PackDependenciesResult): void {
   }
 
   if (!result.hasDependencies) {
+    console.log('===== Info =====');
     console.log('No dependencies to analyze');
     console.log('Packing Dependencies skipped');
-
     return;
   }
 
