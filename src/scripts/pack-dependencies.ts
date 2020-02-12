@@ -10,6 +10,13 @@ function printStats(quiet: boolean, result: PackDependenciesResult): void {
     return;
   }
 
+  if (!result.hasBundledDependencies) {
+    console.log('===== Info =====');
+    console.log('No dependencies to analyze');
+    console.log('Packing Dependencies skipped');
+    return;
+  }
+
   if (!result.hasCreatedTarball) {
     throw new Error('Tarball not created when it should have been.');
   }

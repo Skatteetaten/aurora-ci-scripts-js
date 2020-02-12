@@ -16,6 +16,7 @@ export interface PackDependenciesResult {
   bundledDependencies: string[];
   allDependencies: string[];
   hasCreatedTarball: boolean;
+  hasBundledDependencies: boolean;
 }
 
 export class Packer {
@@ -32,10 +33,13 @@ export class Packer {
     quiet = false
   }: PackDependenciesOption): void {
     const pj = createPackageWithBundledDeps(packageJsonPath);
+    const hasBundledDependencies = pj.bundledDependencies.length > 0;
 
     if (!quiet) {
-      console.log('===== Packing =====');
-      pj.bundledDependencies.forEach(item => console.log(item));
+      if (hasBundledDependencies) {
+        console.log('===== Packing =====');
+        pj.bundledDependencies.forEach(item => console.log(item));
+      }
     }
 
     const walker = new BundleWalkerSync({
@@ -52,15 +56,23 @@ export class Packer {
       allDependencies: depFiles
     };
 
-    if (createTarball) {
+    if (createTarball && hasBundledDependencies) {
       tar
         .create({ gzip: true }, files)
         .pipe(createWriteStream(target))
         .on('close', () => {
-          onClose(quiet, { ...result, hasCreatedTarball: true });
+          onClose(quiet, {
+            ...result,
+            hasCreatedTarball: true,
+            hasBundledDependencies
+          });
         });
     } else {
-      onClose(quiet, { ...result, hasCreatedTarball: false });
+      onClose(quiet, {
+        ...result,
+        hasCreatedTarball: false,
+        hasBundledDependencies
+      });
     }
   }
 }
