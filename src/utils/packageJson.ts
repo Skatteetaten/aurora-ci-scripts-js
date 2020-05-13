@@ -20,7 +20,7 @@ export function getPackageJson(path: PathLike): PackageJson {
     bundledDependencies: [],
     dependencies: {},
     devDependencies: {},
-    ...original
+    ...original,
   };
 }
 
@@ -30,12 +30,12 @@ export function createPackageWithBundledDeps(path: string): PackageJson {
   const bundledDependencies = Array.from(
     new Set([
       ...Object.keys(pj.dependencies),
-      ...(pj.bundledDependencies || [])
+      ...(pj.bundledDependencies || []),
     ])
   );
 
   return {
     ...pj,
-    bundledDependencies
+    bundledDependencies,
   };
 }

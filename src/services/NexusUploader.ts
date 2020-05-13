@@ -6,14 +6,14 @@ import {
   deployToNexus,
   NexusDeployerConfig,
   MavenSchema,
-  FileType
+  FileType,
 } from 'aurora-artifact-deployer';
 
 import { getTgzName, toSafeName } from '../utils/utils';
 import { Classifier } from '../utils/classifier';
 import {
   PackageJson,
-  createPackageWithBundledDeps
+  createPackageWithBundledDeps,
 } from '../utils/packageJson';
 
 export class NexusUploader {
@@ -50,7 +50,7 @@ export class NexusUploader {
 
     return {
       ...pkgJson,
-      groupId
+      groupId,
     };
   }
 
@@ -78,7 +78,7 @@ export class NexusUploader {
       auth,
       classifier,
       url: `${repoHost}/repository/${releaseType}`,
-      artifact: tgzPath
+      artifact: tgzPath,
     };
 
     const excludeFileTypes: FileType[] = [];
@@ -90,19 +90,19 @@ export class NexusUploader {
       groupId: pkgJson.groupId,
       artifactId: toSafeName(pkgJson.name),
       packaging: 'tgz',
-      version: version
+      version: version,
     };
 
     await deployToNexus(schema, nexusConfig, {
       parallel: true,
-      excludeFileTypes
+      excludeFileTypes,
     });
   }
 
   private getAuthentication(): NexusAuthentication {
     const auth = {
       username: this.getConfig('nexus3Username'),
-      password: this.getConfig('nexus3Password')
+      password: this.getConfig('nexus3Password'),
     };
 
     if (auth.password === 'undefined' || auth.username === 'undefined') {
