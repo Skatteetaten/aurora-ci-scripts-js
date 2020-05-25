@@ -6,7 +6,7 @@ describe('classifier', () => {
     test.each<Test>([
       ['Webleveransepakke', true],
       ['Dependencies', true],
-      ['Stuff', false]
+      ['Stuff', false],
     ])('given %s it should return %s', (text, expected) => {
       expect(isClassifier(text)).toBe(expected);
     });

@@ -37,7 +37,7 @@ try {
   const packageJsonPath = resolve(appPath, 'package.json');
   Packer.packDependencies({
     packageJsonPath,
-    onClose: printStats
+    onClose: printStats,
   });
 } catch (error) {
   ErrorHandler.logAndExit(error);

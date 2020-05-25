@@ -9,14 +9,14 @@ describe('utils', () => {
       version: '1.0.0',
       bundledDependencies: [],
       devDependencies: {},
-      dependencies: {}
+      dependencies: {},
     };
 
     type Test = [Classifier, string];
 
     test.each<Test>([
       ['Webleveransepakke', 'artifact-1.0.0.tgz'],
-      ['Dependencies', 'artifact-1.0.0-dependencies.tgz']
+      ['Dependencies', 'artifact-1.0.0-dependencies.tgz'],
     ])(
       '%# given classifier %s it should return tgz name as %s',
       (classifier, expected) => {
@@ -31,14 +31,14 @@ describe('utils', () => {
       version: '1.0.0',
       bundledDependencies: [],
       devDependencies: {},
-      dependencies: {}
+      dependencies: {},
     };
 
     type Test = [Classifier, string];
 
     test.each<Test>([
       ['Webleveransepakke', 'skatteetaten-artifact-1.0.0.tgz'],
-      ['Dependencies', 'skatteetaten-artifact-1.0.0-dependencies.tgz']
+      ['Dependencies', 'skatteetaten-artifact-1.0.0-dependencies.tgz'],
     ])(
       '%# given classifier %s it should return tgz name as %s',
       (classifier, expected) => {

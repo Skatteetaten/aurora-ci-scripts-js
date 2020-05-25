@@ -15,7 +15,7 @@ describe('Packer', () => {
         packageJsonPath,
         createTarball: false,
         quiet: true,
-        onClose: verify
+        onClose: verify,
       });
     });
   });

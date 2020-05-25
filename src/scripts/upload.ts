@@ -3,7 +3,7 @@ import { ErrorHandler } from '../services/ErrorHandler';
 import {
   isClassifier,
   Classifier,
-  VALID_CLASSIFIERS
+  VALID_CLASSIFIERS,
 } from '../utils/classifier';
 
 export function validateAndGetArgs(
