@@ -7,7 +7,7 @@ import {
   NexusDeployerConfig,
   MavenSchema,
   FileType,
-} from 'aurora-artifact-deployer';
+} from '@skatteetaten/artifact-deployer';
 
 import { getTgzName, toSafeName } from '../utils/utils';
 import { Classifier } from '../utils/classifier';

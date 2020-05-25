@@ -26,7 +26,7 @@
     "clean": "rimraf lib *.tgz coverage"
   },
   "dependencies": {
-    "aurora-artifact-deployer": "1.0.0",
+    "@skatteetaten/artifact-deployer": "2.0.0",
     "npm-bundled": "1.1.1",
     "tar": "6.0.2"
   },
