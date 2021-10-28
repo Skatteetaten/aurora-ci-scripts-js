@@ -1,7 +1,7 @@
 {
   "name": "@skatteetaten/ci-scripts",
   "groupId": "no.skatteetaten.aurora",
-  "version": "2.0.5",
+  "version": "2.0.8",
   "description": "",
   "author": "Aurora OpenShift Utvikling",
   "license": "Apache-2.0",
@@ -37,7 +37,7 @@
     "@types/jest": "27.0.2",
     "@types/node": "16.11.6",
     "@types/rimraf": "3.0.2",
-    "@types/tar": "4.0.3",
+    "@types/tar": "6.1.0",
     "@typescript-eslint/eslint-plugin": "5.2.0",
     "@typescript-eslint/parser": "5.2.0",
     "eslint": "8.1.0",
