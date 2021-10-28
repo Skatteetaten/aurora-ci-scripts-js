@@ -38,5 +38,7 @@ try {
 } catch (error: unknown) {
   if (error instanceof Error) {
     ErrorHandler.logAndExit(error);
+  } else {
+    console.warn(error);
   }
 }
