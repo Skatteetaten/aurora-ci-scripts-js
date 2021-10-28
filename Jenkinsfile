@@ -10,7 +10,7 @@ def overrides = [
     npmInstallCommand: 'ci',
     credentialsId: "github",
     chatRoom: "#aos-notifications",
-    nodeVersion: "10",
+    nodeVersion: "12",
     openShiftBuild: false,
     deployTo: null,
     versionStrategy: [

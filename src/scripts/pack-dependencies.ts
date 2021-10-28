@@ -39,6 +39,8 @@ try {
     packageJsonPath,
     onClose: printStats,
   });
-} catch (error) {
-  ErrorHandler.logAndExit(error);
+} catch (error: unknown) {
+  if (error instanceof Error) {
+    ErrorHandler.logAndExit(error);
+  }
 }
